@@ -33,6 +33,12 @@ const resolvers = {
     reviews(parent){
         return db.reviews.filter((review)=> parent.id === review.game_id)
     }
+  },
+  Author:{
+    reviews(parent){
+        return db.reviews.filter((review)=> review.author_id === parent.id)
+
+    }
   }
 };
 
