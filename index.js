@@ -39,7 +39,7 @@ const resolvers = {
       return db.reviews.filter((review) => review.author_id === parent.id);
     },
   },
-  
+
   Review: {
     author(parent) {
       // Find the author corresponding to the review's author_id
@@ -48,6 +48,12 @@ const resolvers = {
     game(parent) {
       // Find the game corresponding to the review's game_id
       return db.games.find((game) => game.id === parent.game_id);
+    },
+  },
+  Mutation: {
+    deleteGame(_, args) {
+      db.games = db.games.filter((a) => a.id !== args.id);
+      return db.games;
     },
   },
 };
