@@ -19,33 +19,42 @@ const resolvers = {
     authors() {
       return db.authors;
     },
-    review(_, args){
-        return db.reviews.find((review) => review.id === args.id)
+    review(_, args) {
+      return db.reviews.find((review) => review.id === args.id);
     },
-    author(_, args){
-        return db.authors.find((author) => author.id === args.id)
+    author(_, args) {
+      return db.authors.find((author) => author.id === args.id);
     },
-    game(_, args){
-        return db.games.find((game) => game.id === args.id)
-    }
+    game(_, args) {
+      return db.games.find((game) => game.id === args.id);
+    },
   },
-  Game:{
-    reviews(parent){
-        return db.reviews.filter((review)=> parent.id === review.game_id)
-    }
+  Game: {
+    reviews(parent) {
+      return db.reviews.filter((review) => parent.id === review.game_id);
+    },
   },
-  Author:{
-    reviews(parent){
-        return db.reviews.filter((review)=> review.author_id === parent.id)
-
-    }
-  }
+  Author: {
+    reviews(parent) {
+      return db.reviews.filter((review) => review.author_id === parent.id);
+    },
+  },
+  
+  Review: {
+    author(parent) {
+      // Find the author corresponding to the review's author_id
+      return db.authors.find((author) => author.id === parent.author_id);
+    },
+    game(parent) {
+      // Find the game corresponding to the review's game_id
+      return db.games.find((game) => game.id === parent.game_id);
+    },
+  },
 };
-
 // server setup
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
 });
 
 const { url } = await startStandaloneServer(server, {
