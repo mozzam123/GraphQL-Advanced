@@ -27,3 +27,6 @@ Before you start, ensure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/mozzam123/GraphQL-Advanced
+
+### Usage
+You can interact with the GraphQL API using a tool like Apollo Client, Postman, or by making HTTP requests directly.
