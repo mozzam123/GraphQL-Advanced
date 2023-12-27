@@ -1,4 +1,4 @@
-# GraphQL Node.js Project
+# GraphQL Advanced
 
 This is a GraphQL Node.js project that implements a simple API for managing game reviews and authors. It allows you to perform CRUD (Create, Read, Update, Delete) operations on games, reviews, and authors.
 
